@@ -1,4 +1,14 @@
-/* app css stylesheet */
+/* Typography */
+
+h1 {
+  font-size: 44px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 300;
+}
+
 
 .menu {
   list-style: none;
@@ -27,4 +37,47 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+.welcome {
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+.welcome {
+  max-width: 350px;
+}
+
+.search-form {
+  max-width: 300px;
+}
+
+/* Search component */
+
+.search-component {
+  background-color: rgba(129,190,65,0.9);
+  color: white;
+  padding: 10px 0px;
+}
+
+.btn-light {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+}
+
+.btn-light:hover, .btn-light:focus {
+  border: 1px solid #efefef;
+  background-color: transparent;
+  color: #f1f1f1;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus { 
+  outline: none; ! important; outline-style: none; 
+}
+
+/* Debug */
+
+.errorText {
+  font-size: 11px;
 }

@@ -6,35 +6,78 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Solara</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
+
   <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
   </ul>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <div class="search-component" ng-controller="SearchCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                <section class="welcome">
+                  <h1>Solara</h1>
+                  <h2>Satisfy your craving for tasty sun event knowledge bites</h2>
+                </section>
+              </div>
+              <div class="col-md-6">
+                <form novalidate name="searchform" class="search-form">
+                  <section class="form-group" ng-class="{'has-error': searchform.address.$invalid}">
+                    <label>Address:</label>
+                    <input name="address" type="text" ng-model="search.address" required class="form-control">   
+                  </section>
+                  <section class="form-group" ng-class="{'has-error': searchform.startDate.$invalid}">
+                    <label>Start date:</label>
+                    <input name="startDate" type="date" class="form-control" datepicker-popup ng-model="search.startDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  </section>
+                  <section class="form-group" ng-class="{'has-error': searchform.endDate.$invalid}">
+                    <label>End date:</label>
+                    <input name="endDate" type="date" class="form-control" datepicker-popup ng-model="search.endDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  </section>
+                  <section class="form-group">
+                    <span ng-show="searchform.startDate.$error.required">Address required.</span>
+                    <input class="btn btn-light pull-right" type="submit" value="Fetch" ng-click="doSearch(search)" ng-disabled="searchform.$invalid"/>
+                  </section>
+                  <section class="form-group errorText">
+                    form: {{searchform.$error}}
+                    <br>
+                    address: {{searchform.address.$error}}
+                    <br>
+                    startDate: {{searchform.startDate.$error}}
+                    <br>
+                    endDate: {{searchform.endDate.$error}}                    
+                    <br>
+                    <br>
+                    {{searchform}}
+                  </section>
+                </form>
+              </div>        
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div ng-view></div>
+  <div ng-view></div>  
 
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
   <script src="view2/view2.js"></script>
+  <script src="components/searchform/searchform.js"></script>
 </body>
 </html>
