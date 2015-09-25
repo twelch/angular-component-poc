@@ -34,39 +34,46 @@ angular.module('myApp.searchform', [])
 }])
 
 .controller('SearchCtrl', ['$scope', 'SearchService', function($scope, SearchService) {
-  //Search model with defaults
-  $scope.search = {
+  //Search params model
+  $scope.params = {
     address: "400 SW 6th Ave, Portland, OR",
     startDate: new Date(Date.now()-86400000*7), //7 days ago
     endDate: new Date()
   };
 
-  //Search constants
-  $scope.minDate = new Date(Date.now()-86400000*365); //1 year ago
-  $scope.maxDate = new Date(Date.now()+86400000*365); //1 year from now
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
+  //Search results model
+  $scope.results = {
+    location: undefined,
+    days: {}
+  };
+  $scope.errors = {};
+
+  //Search form config
+  $scope.config = {
+    dateOptions: {
+      formatYear: 'yy',
+      startingDay: 1
+    }
   };
 
   //Custom date range validator
-  $scope.$watch('search.startDate', validateDates);
-  $scope.$watch('search.endDate', validateDates);
+  $scope.$watch('params.startDate', validateDates);
+  $scope.$watch('params.endDate', validateDates);
   function validateDates() {
-    if (!$scope.search) return;
     //Invalid if start date before end date
-    $scope.searchform.startDate.$setValidity("endBeforeStart", $scope.search.endDate > $scope.search.startDate);
+    $scope.searchform.$setValidity("endBeforeStart", $scope.params.endDate > $scope.params.startDate);
   }
 
-  $scope.doSearch = function(searchParams) {    
+  $scope.doSearch = function(params) {    
     //Reset error messages
-    $scope.search.errors = {};
+    $scope.location = undefined;
+    $scope.errors = {};
 
     //Handle geolocation
-    SearchService.getLocation(searchParams.address).then(function(location){
-      console.log(location);
+    SearchService.getLocation(params.address).then(function(location){
+      $scope.location = location;
     }, function(errorStr) {
-      $scope.search.errors[errorStr] = true;
+      $scope.errors[errorStr] = true;
     });
   }
 }]);
