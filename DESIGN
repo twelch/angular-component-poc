@@ -1,0 +1,37 @@
+Build
+  Bower - install libs
+  NPM - run server, tests
+
+Services
+  SunSeek - fetches location given address.  fetches sun data given location, start date, and end date.  
+    Tests:
+      error if missing address
+      error if missing start or end date
+      error if start greater than end date
+      successful return
+  Shared between controllers
+
+Views
+  SunList
+    SunSearch Component
+      Controller:
+        on search click, fetch sun data, notify
+      Template:
+        Address input
+        Date range picker
+      Tests:
+        error if missing start or end date
+        error if start greater than end date
+        error 
+
+  SunTable Component
+    Controller:
+
+
+SunDetail view
+
+
+NEEDS
+- date validation, ng-hide/show if needed
+- paging
+- 
