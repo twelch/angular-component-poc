@@ -48,7 +48,11 @@
                     <input name="endDate" type="date" class="form-control" datepicker-popup ng-model="search.endDate" min-date="minDate"  max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   </section>
                   <section class="form-group">
+                    <div>
                     <input class="btn btn-light pull-right" type="submit" value="Fetch" ng-click="doSearch(search)" ng-disabled="searchform.$invalid"/>
+                    <div class="form-error" ng-show="searchform.startDate.$error.endBeforeStart">End date must be before start.</div>
+                    <div class="form-error" ng-show="search.errors.geocodeZero">No location for that address.</div>
+                    <div class="form-error" ng-show="search.errors.geocodeError">Geocode error, try again.</div>
                   </section>
                 </form>
               </div>        

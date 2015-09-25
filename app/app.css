@@ -9,6 +9,12 @@ h2 {
   font-weight: 300;
 }
 
+/* Helper classes */
+
+.form-error {
+  color: #a94442;
+}
+
 
 .menu {
   list-style: none;

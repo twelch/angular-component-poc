@@ -21,9 +21,9 @@ angular.module('myApp.searchform', [])
         if (response.data.status == 'OK') {
           return response.data.results[0].geometry.location;
         } else if (response.data.status == 'ZERO_RESULTS') {
-          return $q.reject('0 results');
+          return $q.reject('geocodeZero');
         } else {
-          return $q.reject('Geocode error');
+          return $q.reject('geocodeError');
         }
       }, function (error) {
         //Exception handler
@@ -49,7 +49,7 @@ angular.module('myApp.searchform', [])
     startingDay: 1
   };
 
-  //Custom date range validatore
+  //Custom date range validator
   $scope.$watch('search.startDate', validateDates);
   $scope.$watch('search.endDate', validateDates);
   function validateDates() {
@@ -59,10 +59,14 @@ angular.module('myApp.searchform', [])
   }
 
   $scope.doSearch = function(searchParams) {    
+    //Reset error messages
+    $scope.search.errors = {};
+
+    //Handle geolocation
     SearchService.getLocation(searchParams.address).then(function(location){
       console.log(location);
-    }, function(error) {
-      throw error
+    }, function(errorStr) {
+      $scope.search.errors[errorStr] = true;
     });
   }
 }]);
