@@ -31,7 +31,11 @@ Views
 SunDetail view
 
 
+Interesting Spots:
+- date equality check, date picker keeps local time
+
+
 NEEDS
-- date validation, ng-hide/show if needed
-- paging
+- same date validation, ng-hide/show of custom validation
+
 - 

@@ -49,6 +49,15 @@ angular.module('myApp.searchform', [])
     startingDay: 1
   };
 
+  //Custom date range validatore
+  $scope.$watch('search.startDate', validateDates);
+  $scope.$watch('search.endDate', validateDates);
+  function validateDates() {
+    if (!$scope.search) return;
+    //Invalid if start date before end date
+    $scope.searchform.startDate.$setValidity("endBeforeStart", $scope.search.endDate > $scope.search.startDate);
+  }
+
   $scope.doSearch = function(searchParams) {    
     SearchService.getLocation(searchParams.address).then(function(location){
       console.log(location);

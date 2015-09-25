@@ -37,7 +37,7 @@
                 <form novalidate name="searchform" class="search-form">
                   <section class="form-group" ng-class="{'has-error': searchform.address.$invalid}">
                     <label>Address:</label>
-                    <input name="address" type="text" ng-model="search.address" required class="form-control">   
+                    <input name="address" type="text" ng-model="search.address" required class="form-control">
                   </section>
                   <section class="form-group" ng-class="{'has-error': searchform.startDate.$invalid}">
                     <label>Start date:</label>
@@ -45,23 +45,10 @@
                   </section>
                   <section class="form-group" ng-class="{'has-error': searchform.endDate.$invalid}">
                     <label>End date:</label>
-                    <input name="endDate" type="date" class="form-control" datepicker-popup ng-model="search.endDate" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <input name="endDate" type="date" class="form-control" datepicker-popup ng-model="search.endDate" min-date="minDate"  max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                   </section>
                   <section class="form-group">
-                    <span ng-show="searchform.startDate.$error.required">Address required.</span>
                     <input class="btn btn-light pull-right" type="submit" value="Fetch" ng-click="doSearch(search)" ng-disabled="searchform.$invalid"/>
-                  </section>
-                  <section class="form-group errorText">
-                    form: {{searchform.$error}}
-                    <br>
-                    address: {{searchform.address.$error}}
-                    <br>
-                    startDate: {{searchform.startDate.$error}}
-                    <br>
-                    endDate: {{searchform.endDate.$error}}                    
-                    <br>
-                    <br>
-                    {{searchform}}
                   </section>
                 </form>
               </div>        
