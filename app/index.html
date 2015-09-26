@@ -30,7 +30,7 @@
               <div class="col-md-6">
                 <section class="welcome">
                   <h1>Solara</h1>
-                  <h2>Satisfy your craving for daily sun event morsels</h2>
+                  <h2>Satisfy your craving for tasty sun event morsels</h2>
                 </section>
               </div>
               <div class="col-md-6">
@@ -55,8 +55,11 @@
                       <div class="form-error" ng-show="searchform.startDate.$invalid">Invalid start date.</div>
                       <div class="form-error" ng-show="searchform.endDate.$invalid">Invalid end date.</div>
                       <div class="form-error" ng-show="searchform.$error.endBeforeStart">End date must be before start.</div>
+                      <div class="form-error" ng-show="searchform.$error.durationTooLong">Duration must be less than 14 days.</div>
                       <div class="form-error" ng-show="exceptions.geocodeZero">No location for that address.</div>
                       <div class="form-error" ng-show="exceptions.geocodeError">Geocode error, try again.</div>
+                      <div class="form-error" ng-show="exceptions.timezoneZero">No timezone for that location.</div>
+                      <div class="form-error" ng-show="exceptions.timezoneError">Timezone error, try again.</div>
                       <div class="form-error" ng-show="exceptions.searchError">Search error, try again.</div>
                     </div>
                   </section>
@@ -72,6 +75,8 @@
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/moment-timezone/moment-timezone.js"></script>
   <script src="app.js"></script>
   <script src="components/search/search.js"></script>
   <script src="view1/view1.js"></script>

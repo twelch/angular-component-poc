@@ -32,10 +32,10 @@ SunDetail view
 
 
 Interesting Spots:
-- date equality check, date picker keeps local time
+- transitioning from dates (picker) to moments
 
+Improvements:
+- Create Day model class
 
 NEEDS
-- same date validation, ng-hide/show of custom validation
-
-- 
+- fix same date validation

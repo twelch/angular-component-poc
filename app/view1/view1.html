@@ -1,5 +1,32 @@
-{{search.sunDays}}
-{{search.sunDays.length}}
+<div>
+  <span ng-show="search.location">
+    Location: {{search.getLocationStr()}}
+  </span>
+  <span ng-show="search.location">
+    Timezone: {{search.getTimezone().timeZoneName}}
+  </span>  
+</div>
 <div ng-show="search.sunDays.length > 1">
-  yes
+  <table st-table="search.sunDays" class="table table-striped">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Sunrise</th>
+      <th>Nautical Afternoon</th>
+      <th>Sunset</th>
+      <th>Day Length</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="day in search.sunDays">
+      <td>{{day.date}}
+      <td>{{day.events.sunrise}}</td>
+      <td>{{day.events.nautical_afternoon}}
+      <td>{{day.events.sunset}}</td>
+      <td>{{day.events.day_length}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  {{search.sunDays}}
 </div>
