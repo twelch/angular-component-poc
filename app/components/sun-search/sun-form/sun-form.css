@@ -1,0 +1,25 @@
+.search-form {
+  max-width: 300px;
+}
+
+.btn-light {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+}
+
+.btn-light:hover, .btn-light:focus {
+  border: 1px solid #efefef;
+  background-color: transparent;
+  color: #f1f1f1;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus { 
+  outline: none; ! important; outline-style: none; 
+}
+
+/* Debug */
+
+.errorText {
+  font-size: 11px;
+}

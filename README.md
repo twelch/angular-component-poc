@@ -73,3 +73,27 @@ Reviewers will assess your familiarity with standard libraries, single-page app 
 1. Did your application fulfill the basic requirements?
 1. Did you document the method for setting up and running your application?
 1. Did you follow the instructions for submission?
+
+## Installation Instructions
+
+### Prerequisites
+* Node.js
+* npm
+* bower
+* Fire up a terminal and go to the root directory
+
+### Setup
+Install dependencies
+```
+npm install
+```
+Start up the dev server
+```
+npm start
+```
+Browse to http://localhost:8001
+
+### Unit Tests
+```
+npm test
+```

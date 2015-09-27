@@ -1,0 +1,30 @@
+<form novalidate name="searchform" class="search-form">
+  <section class="form-group" ng-class="{'has-error': searchform.address.$invalid}">
+    <label>Address:</label>
+    <input name="address" type="text" ng-model="params.address" required class="form-control">
+  </section>
+  <section class="form-group" ng-class="{'has-error': searchform.startDate.$invalid}">
+    <label>Start date:</label>
+    <input name="startDate" type="date" class="form-control" datepicker-popup ng-model="params.startDate" datepicker-options="config.dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+  </section>
+  <section class="form-group" ng-class="{'has-error': searchform.endDate.$invalid}">
+    <label>End date:</label>
+    <input name="endDate" type="date" class="form-control" datepicker-popup ng-model="params.endDate"datepicker-options="config.dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+  </section>
+  <section class="form-group">
+    <div>
+    <input class="btn btn-light pull-right" type="submit" value="Fetch" ng-click="doSearch(params)" ng-disabled="searchform.$invalid"/>
+    <div class="form-errors" ng-cloak>
+      <div class="form-error" ng-show="searchform.address.$invalid">Invalid address.</div>
+      <div class="form-error" ng-show="searchform.startDate.$invalid">Invalid start date.</div>
+      <div class="form-error" ng-show="searchform.endDate.$invalid">Invalid end date.</div>
+      <div class="form-error" ng-show="searchform.$error.endBeforeStart">End date must be same or after start.</div>
+      <div class="form-error" ng-show="searchform.$error.durationTooLong">Duration must be less than 14 days.</div>
+      <div class="form-error" ng-show="exceptions.geocodeZero">No location for that address.</div>
+      <div class="form-error" ng-show="exceptions.geocodeError">Geocode error, try again.</div>
+      <div class="form-error" ng-show="exceptions.timezoneZero">No timezone for that location.</div>
+      <div class="form-error" ng-show="exceptions.timezoneError">Timezone error, try again.</div>
+      <div class="form-error" ng-show="exceptions.searchError">Search error, try again.</div>
+    </div>
+  </section>
+</form>

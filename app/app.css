@@ -54,19 +54,10 @@ h2 {
 .welcome {
   font-size: 40px;
   line-height: 1.1;
+  max-width: 350px;  
 }
 
-.welcome {
-  max-width: 350px;
-}
-
-.search-form {
-  max-width: 300px;
-}
-
-/* Search component */
-
-.search-component {  
+.splash {  
   background: -webkit-linear-gradient(90deg, #f46b45 10%, #eea849 90%); /* Chrome 10+, Saf5.1+ */
   background:    -moz-linear-gradient(90deg, #f46b45 10%, #eea849 90%); /* FF3.6+ */
   background:     -ms-linear-gradient(90deg, #f46b45 10%, #eea849 90%); /* IE10 */
@@ -76,26 +67,4 @@ h2 {
   padding: 10px 0px;
   min-height: 310px;
   padding-top: 20px;  
-}
-
-.btn-light {
-  border: 1px solid white;
-  background-color: transparent;
-  color: white;
-}
-
-.btn-light:hover, .btn-light:focus {
-  border: 1px solid #efefef;
-  background-color: transparent;
-  color: #f1f1f1;
-}
-
-.btn:focus, .btn:active:focus, .btn.active:focus { 
-  outline: none; ! important; outline-style: none; 
-}
-
-/* Debug */
-
-.errorText {
-  font-size: 11px;
 }
