@@ -95,14 +95,20 @@ angular.module('myApp.search', [])
     newDay.status = angular.copy(dayResult.status);
     newDay.events = {};
     for (event in dayResult.results) {
-      var eventTime = dayResult.results[event];
-      //Build event date string
-      var eventDateStr = dayResult.date+" "+eventTime;
-      //Parse event moment
-      var eventMoment = moment.utc(eventDateStr, "YYYY-MM-DD h:mm:ss a");
-      //Add TZ and DST offsets
-      newDay.events[event] = eventMoment.add(self.timezone.rawOffset+self.timezone.dstOffset, 'seconds');
+      var eventValue = dayResult.results[event];
+      if (event == 'day_length') {
+        //Duration
+        var eventDuration = moment.duration(eventValue, 'seconds')
+        newDay.events[event] = eventDuration;
+      } else {
+        //Time
+        var eventMoment = moment.utc(eventValue);
+        //Add TZ and DST offsets
+        newDay.events[event] = eventMoment.add(self.timezone.rawOffset+self.timezone.dstOffset, 'seconds');
+      }
     }
+    //Add nautical afternoon duration
+    newDay.events['nautical_afternoon'] = moment.duration(newDay.events['nautical_twilight_end'].diff(newDay.events['solar_noon']));
     //Add new day
     this.sunDays.push(newDay);
   };
@@ -285,6 +291,7 @@ angular.module('myApp.search', [])
               lat: location.lat,
               lng: location.lng,
               date: dateStr,
+              formatted: 0, //unformatted
               callback: 'JSON_CALLBACK'
             }
            })

@@ -30,9 +30,9 @@
         <tr ng-repeat="day in search.sunDays">
           <td>{{day.date.format('MM/DD/YYYY')}}</td>
           <td>{{day.events.sunrise.format('hh:mm a')}}</td>
-          <td>{{day.events.nautical_afternoon}}</td>
+          <td>{{day.events.nautical_afternoon.hours()}}h {{day.events.nautical_afternoon.minutes()}}m</td>
           <td>{{day.events.sunset.format('hh:mm a')}}</td>
-          <td>{{day.events.day_length}}</td>
+          <td>{{day.events.day_length.hours()}}h {{day.events.day_length.minutes()}}m</td>
         </tr>
         </tbody>
       </table>
