@@ -4,9 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.search',  
-  'myApp.view1',
-  'myApp.view2'
+  'myApp.listView'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/list'});
 }]);
