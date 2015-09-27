@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="view1/view1.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -54,7 +55,7 @@
                       <div class="form-error" ng-show="searchform.address.$invalid">Invalid address.</div>
                       <div class="form-error" ng-show="searchform.startDate.$invalid">Invalid start date.</div>
                       <div class="form-error" ng-show="searchform.endDate.$invalid">Invalid end date.</div>
-                      <div class="form-error" ng-show="searchform.$error.endBeforeStart">End date must be before start.</div>
+                      <div class="form-error" ng-show="searchform.$error.endBeforeStart">End date must be same or after start.</div>
                       <div class="form-error" ng-show="searchform.$error.durationTooLong">Duration must be less than 14 days.</div>
                       <div class="form-error" ng-show="exceptions.geocodeZero">No location for that address.</div>
                       <div class="form-error" ng-show="exceptions.geocodeError">Geocode error, try again.</div>

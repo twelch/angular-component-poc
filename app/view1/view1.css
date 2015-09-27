@@ -1,0 +1,10 @@
+.status {
+  background-color: #ddd;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.status span+span{
+  margin-left: 20px;
+}

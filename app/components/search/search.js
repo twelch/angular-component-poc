@@ -22,12 +22,16 @@ angular.module('myApp.search', [])
     endDay: moment.utc().startOf('day')
   };
 
-  //Watch dates produced by picker and update days
+  //Extract Y-M-D from dates produced by picker onChange and convert to moments
   $scope.$watch('params.startDate', function() {
-    $scope.params.startDay = moment.utc($scope.params.startDate).startOf('day');
+    var d = $scope.params.startDate;
+    var ymdStr = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    $scope.params.startDay = moment.utc(ymdStr, 'YYYY-M-D');
   });
   $scope.$watch('params.endDate', function() {
-    $scope.params.endDay = moment.utc($scope.params.endDate).startOf('day');
+    var d = $scope.params.endDate;
+    var ymdStr = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    $scope.params.endDay = moment.utc(ymdStr, 'YYYY-M-D');
   });
   
   //Validate days on change
@@ -36,7 +40,7 @@ angular.module('myApp.search', [])
   function validateDays() {    
     var diffDays = $scope.params.startDay.diff($scope.params.endDay,'days')
     //Verify start less than end
-    $scope.searchform.$setValidity("endBeforeStart", diffDays < 0);
+    $scope.searchform.$setValidity("endBeforeStart", diffDays <= 0);
     //Verify duration no more than 14 days
     $scope.searchform.$setValidity("durationTooLong", Math.abs(diffDays) < 14);
   }
@@ -92,9 +96,14 @@ angular.module('myApp.search', [])
     newDay.events = {};
     for (event in dayResult.results) {
       var eventTime = dayResult.results[event];
-      newDay.events[event] = dayResult.date+" "+eventTime;
+      //Build event date string
+      var eventDateStr = dayResult.date+" "+eventTime;
+      //Parse event moment
+      var eventMoment = moment.utc(eventDateStr, "YYYY-MM-DD h:mm:ss a");
+      //Add TZ and DST offsets
+      newDay.events[event] = eventMoment.add(self.timezone.rawOffset+self.timezone.dstOffset, 'seconds');
     }
-    //Add new and adjust for time zone
+    //Add new day
     this.sunDays.push(newDay);
   };
   this.clearDays = function() {
@@ -262,7 +271,7 @@ angular.module('myApp.search', [])
       //Fire off 1 request for each day in range, building list of promises
       var datePromises = [];
       for (var i=0; i<= numDays; i++) {
-        var curDay = moment(startDay);  //Preserve start day
+        var curDay = moment.utc(startDay);  //Preserve start day
         if (i > 0) {
           curDay.add(i, 'days');
         }

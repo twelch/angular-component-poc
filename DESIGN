@@ -37,5 +37,6 @@ Interesting Spots:
 Improvements:
 - Create Day model class
 
-NEEDS
-- fix same date validation
+ToDo
+- do timezone lookup for each day rather than just first to ensure DST return is correct for each
+- jsLint
