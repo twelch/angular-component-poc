@@ -1,10 +1,10 @@
-.status {
+.sun-table .status {
   background-color: #ddd;
   padding: 5px;
   font-size: 16px;
   font-weight: 200;
 }
 
-.status span+span {
+.sun-table .status span+span {
   margin-left: 20px;
 }
