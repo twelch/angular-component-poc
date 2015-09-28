@@ -26,7 +26,7 @@ describe('sunSearch.sunService module', function() {
       expect(sunService).toBeDefined();
     });
 
-    it('should return true and have 2 days results on successful search', function() {
+    it('should return true on success & have 2 days results with OK status', function() {
       sunService.doSearch(
         'white house', 
         moment(), //start 
@@ -34,6 +34,8 @@ describe('sunSearch.sunService module', function() {
       ).then(function(success){      
         expect(success).toEqual(true);
         expect(sunService.sunDays.length == 2);
+        expect(sunService.sunDays[0].status = "OK")
+        expect(sunService.sunDays[1].status = "OK")
       });
       $httpBackend.flush();
     });
