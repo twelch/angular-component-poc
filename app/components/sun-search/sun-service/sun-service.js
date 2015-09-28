@@ -10,6 +10,7 @@ angular.module('sunSearch.sunService', [])
   this.geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
   this.tzUrl = "https://maps.googleapis.com/maps/api/timezone/json?";
   this.sunUrl = "http://api.sunrise-sunset.org/json?";
+  this.sunUrlCallback = 
 
   /**** Model ****/
   this.location = undefined;  //Search location
