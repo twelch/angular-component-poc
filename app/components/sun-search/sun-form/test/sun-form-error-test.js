@@ -22,12 +22,10 @@ describe("sunSearch.sunForm component", function() {
     console.log(scope.params.address);    
     var addressEl = angular.element(document.querySelector('#address'));
     console.log(addressEl);
-    //addressEl.val('');
+    addressEl.val('');
     //FAILS
-    //angular.element(addressEl)[0].dispatchEvent(new Event('input'));
-    //FAILS
-    //scope.$digest();
-    //expect(angular.element(addressEl).hasClass('ng-invalid')).toEqual(true);
+    scope.$digest();
+    expect(angular.element(addressEl).hasClass('ng-invalid')).toEqual(true);
   });
   it("should error if invalid start date");
   it("should error if invalid end date");
