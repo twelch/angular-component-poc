@@ -26,11 +26,17 @@ angular.module('sunSearch.sunForm', ['sunSearch.sunService'])
   //Extract Y-M-D from dates produced by picker onChange and convert to moments
   $scope.$watch('params.startDate', function() {
     var d = $scope.params.startDate;
+    if (!d) {
+      return;
+    }
     var ymdStr = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
     $scope.params.startDay = moment.utc(ymdStr, 'YYYY-M-D');
   });
   $scope.$watch('params.endDate', function() {
     var d = $scope.params.endDate;
+    if (!d) {
+      return;
+    }
     var ymdStr = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
     $scope.params.endDay = moment.utc(ymdStr, 'YYYY-M-D');
   });
