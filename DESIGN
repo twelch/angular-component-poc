@@ -1,9 +1,0 @@
-Interesting Spots:
-- transitioning from dates (picker) to moments
-
-Improvements:
-- Create Day model class
-
-ToDo
-- do timezone lookup for each day rather than just first to ensure DST return is correct for each
-- jsLint

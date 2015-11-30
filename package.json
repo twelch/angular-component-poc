@@ -2,8 +2,7 @@
   "name": "Solara",
   "private": true,
   "version": "0.0.0",
-  "description": "apparent-solar-time-machine",
-  "repository": "https://github.com/renewablefunding/js_codechallenge",
+  "description": "time machine",
   "license": "Beer",
   "devDependencies": {
     "bower": "^1.3.1",
